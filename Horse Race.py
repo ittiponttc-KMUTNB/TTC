@@ -102,7 +102,7 @@ def build_full_html(df_sorted: pd.DataFrame, progress: dict) -> str:
                     <!-- ชื่อทีม: อยู่ด้านหลังม้า (ซ้าย) -->
                     <div style="white-space:nowrap;
                                 font-family:'Kanit',sans-serif;
-                                font-size:0.70rem;
+                                font-size:1.05rem;
                                 font-weight:700;
                                 color:#fff;
                                 background:rgba(0,0,0,0.72);
