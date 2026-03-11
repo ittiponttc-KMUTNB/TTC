@@ -18,7 +18,7 @@ h1,h2,h3 { color:#f0c040 !important; font-family:'Kanit',sans-serif !important; 
 .stat-value { font-family:'Kanit',sans-serif; font-size:2rem; font-weight:900; color:#f0c040; }
 .stat-label { font-family:'Sarabun',sans-serif; font-size:.82rem; color:#7ab3d4; }
 .race-title { font-family:'Kanit',sans-serif; font-size:2.6rem; font-weight:900; color:#f0c040; text-align:center; text-shadow:0 0 30px rgba(240,192,64,.5); letter-spacing:2px; margin-bottom:.1rem; }
-.race-subtitle { font-family:'Sarabun',sans-serif; font-size:1.05rem; color:#7ab3d4; text-align:center; margin-bottom:1.6rem; }
+.race-subtitle { font-family:'Sarabun',sans-serif; font-size:1.5rem; color:#7ab3d4; text-align:center; margin-bottom:1.6rem; }
 .section-header { font-family:'Kanit',sans-serif; font-size:1.15rem; font-weight:700; color:#f0c040; border-bottom:2px solid rgba(240,192,64,.3); padding-bottom:7px; margin-bottom:14px; }
 .stButton>button { font-family:'Kanit',sans-serif !important; font-weight:700 !important; border-radius:10px !important; border:none !important; padding:.55rem 1.6rem !important; font-size:1rem !important; transition:all .2s !important; }
 .stButton>button:hover { transform:translateY(-2px); }
@@ -73,11 +73,11 @@ def build_full_html(df_sorted: pd.DataFrame, progress: dict) -> str:
                     min-height:70px;
                     animation:{ldr_anim};">
 
-            <!-- อันดับ -->
-            <div style="font-family:'Kanit',sans-serif;font-size:1.3rem;font-weight:900;
-                        width:36px;text-align:center;flex-shrink:0;
-                        color:{rank_col};text-shadow:0 0 10px {rank_col};">
-                {rank_sym}
+            <!-- ธงซ้าย -->
+            <div style="font-size:1.3rem;width:36px;text-align:center;
+                        flex-shrink:0;opacity:0.7;
+                        animation:flag-wave 1.4s ease-in-out infinite;">
+                🏁
             </div>
 
             <!-- ลู่วิ่ง -->
@@ -102,7 +102,7 @@ def build_full_html(df_sorted: pd.DataFrame, progress: dict) -> str:
                     <!-- ชื่อทีม: อยู่ด้านหลังม้า (ซ้าย) -->
                     <div style="white-space:nowrap;
                                 font-family:'Kanit',sans-serif;
-                                font-size:1.05rem;
+                                font-size:1.5rem;
                                 font-weight:700;
                                 color:#fff;
                                 background:rgba(0,0,0,0.72);
@@ -134,22 +134,22 @@ def build_full_html(df_sorted: pd.DataFrame, progress: dict) -> str:
                     💨
                 </div>
 
-                <!-- ธงปลายทาง -->
-                <div style="position:absolute;right:14px;top:50%;
-                            transform:translateY(-50%);
-                            font-size:1.3rem;opacity:0.6;
-                            animation:flag-wave 1.4s ease-in-out infinite;">
-                    🏁
-                </div>
             </div>
 
             <!-- คะแนน -->
-            <div style="font-family:'Kanit',sans-serif;font-size:1.05rem;font-weight:700;
+            <div style="font-family:'Kanit',sans-serif;font-size:1.5rem;font-weight:700;
                         background:rgba(240,192,64,0.12);
                         border:1px solid rgba(240,192,64,0.4);
                         color:#f0c040;padding:4px 14px;border-radius:20px;
                         min-width:68px;text-align:center;flex-shrink:0;">
                 {score}
+            </div>
+
+            <!-- เหรียญอันดับ (ขวาสุด) -->
+            <div style="font-family:'Kanit',sans-serif;font-size:1.3rem;font-weight:900;
+                        width:36px;text-align:center;flex-shrink:0;
+                        color:{rank_col};text-shadow:0 0 10px {rank_col};">
+                {rank_sym}
             </div>
         </div>"""
 
@@ -346,7 +346,7 @@ if len(df_sorted) >= 1:
                     <div style="font-size:2.3rem;">{HORSE}</div>
                     <div style="font-size:1.9rem">{MEDAL.get(ri+1,'')}</div>
                     <div style="font-family:'Kanit',sans-serif;font-weight:700;
-                                color:white;font-size:1.05rem;margin:6px 0 3px">{row['ชื่อทีม']}</div>
+                                color:white;font-size:1.5rem;margin:6px 0 3px">{row['ชื่อทีม']}</div>
                     <div style="font-family:'Kanit',sans-serif;font-weight:900;
                                 color:#f0c040;font-size:1.7rem">{int(row['คะแนน'])}</div>
                     <div style="font-family:'Sarabun',sans-serif;color:#7ab3d4;font-size:.78rem">คะแนน</div>
