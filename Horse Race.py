@@ -87,34 +87,34 @@ def build_full_html(df_sorted: pd.DataFrame, progress: dict) -> str:
                         position:relative;overflow:visible;
                         margin:0 10px;">
 
-                <!-- horse-wrap: ม้า + ชื่อทีม เคลื่อนที่พร้อมกัน -->
+                <!-- horse-wrap: ชื่อทีม(ด้านหลัง/ซ้าย) + ม้า(หันขวา) เคลื่อนที่พร้อมกัน -->
                 <div style="position:absolute;
                             top:50%;
                             left:{left:.1f}%;
                             transform:translateY(-50%);
                             transition:left 0.75s cubic-bezier(0.22,1,0.36,1);
                             display:flex;
-                            flex-direction:column;
+                            flex-direction:row;
                             align-items:center;
-                            z-index:10;">
+                            z-index:10;
+                            gap:5px;">
 
-                    <!-- ชื่อทีม: นิ่ง ลอยเหนือม้า -->
+                    <!-- ชื่อทีม: อยู่ด้านหลังม้า (ซ้าย) -->
                     <div style="white-space:nowrap;
                                 font-family:'Kanit',sans-serif;
-                                font-size:0.72rem;
+                                font-size:0.70rem;
                                 font-weight:700;
                                 color:#fff;
                                 background:rgba(0,0,0,0.72);
                                 border:1px solid rgba(255,255,255,0.28);
                                 border-radius:20px;
-                                padding:2px 9px;
-                                margin-bottom:2px;
-                                line-height:1.4;">
+                                padding:2px 8px;
+                                line-height:1.5;">
                         {name}
                     </div>
 
-                    <!-- ม้า: หันหน้าไปทางขวา (scaleX ปกติ) + gallop -->
-                    <div style="font-size:2.2rem;
+                    <!-- ม้า: scaleX(-1) flip ให้หันขวา + gallop -->
+                    <div style="font-size:2.4rem;
                                 line-height:1;
                                 display:inline-block;
                                 filter:drop-shadow(2px 3px 5px rgba(0,0,0,0.85));
@@ -165,15 +165,15 @@ def build_full_html(df_sorted: pd.DataFrame, progress: dict) -> str:
   /* ══ ม้า gallop: body โยนขึ้นลง + เอียง ══
      scaleX เป็นบวกตลอด → ม้าหันขวา (ทิศทางวิ่ง) */
   @keyframes gallop {{
-    0%   {{ transform:translateY(-50%) rotate(-3deg) scaleX( 1.00); }}
-    12%  {{ transform:translateY(-60%) rotate(-1deg) scaleX( 1.05); }}
-    25%  {{ transform:translateY(-42%) rotate( 3deg) scaleX( 0.95); }}
-    38%  {{ transform:translateY(-57%) rotate(-2deg) scaleX( 1.04); }}
-    50%  {{ transform:translateY(-44%) rotate( 2deg) scaleX( 0.96); }}
-    62%  {{ transform:translateY(-55%) rotate(-1deg) scaleX( 1.03); }}
-    75%  {{ transform:translateY(-46%) rotate( 1deg) scaleX( 0.97); }}
-    88%  {{ transform:translateY(-54%) rotate(-2deg) scaleX( 1.02); }}
-    100% {{ transform:translateY(-50%) rotate(-3deg) scaleX( 1.00); }}
+    0%   {{ transform:scaleX(-1.00) translateY(-50%) rotate(-3deg); }}
+    12%  {{ transform:scaleX(-1.05) translateY(-60%) rotate(-1deg); }}
+    25%  {{ transform:scaleX(-0.95) translateY(-42%) rotate( 3deg); }}
+    38%  {{ transform:scaleX(-1.04) translateY(-57%) rotate(-2deg); }}
+    50%  {{ transform:scaleX(-0.96) translateY(-44%) rotate( 2deg); }}
+    62%  {{ transform:scaleX(-1.03) translateY(-55%) rotate(-1deg); }}
+    75%  {{ transform:scaleX(-0.97) translateY(-46%) rotate( 1deg); }}
+    88%  {{ transform:scaleX(-1.02) translateY(-54%) rotate(-2deg); }}
+    100% {{ transform:scaleX(-1.00) translateY(-50%) rotate(-3deg); }}
   }}
 
   @keyframes dust {{
